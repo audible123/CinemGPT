@@ -1,6 +1,6 @@
 ## Project Overview
 
-Greetings, movie lovers! 👋 Welcome to Netflix-GPT, a state-of-the-art movie recommendation website powered by the GPT (Generative Pre-trained Transformer) model and Firebase.
+Greetings, movie lovers! 👋 Welcome to CinemGPT, a state-of-the-art movie recommendation website powered by the GPT (Generative Pre-trained Transformer) model and Firebase.
 
 ## Technologies & Packages Used
 
