@@ -43,13 +43,14 @@ const Header = () => {
 	return (
 		<div className="fixed top-0 z-50 h-20 px-3 sm:px-[10%] filter flex justify-between items-center w-full bg-gradient-to-b from-black from-40% to-transparent">
 			<Link to="/">
-				<img
+				<span
 					onClick={handleGptHomePage}
-					className="w-40 sm:w-48 contrast-200"
-					src={APP_LOGO}
-					alt="logo"
-				/>
+					className="text-blue-500 font-bold cursor-pointer text-xl sm:text-2xl"
+				>
+					CinemGPT
+				</span>
 			</Link>
+
 			{user?.photoURL && (
 				<div className="relative flex place-items-center justify-center">
 					{headerhide ? (

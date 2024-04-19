@@ -74,7 +74,7 @@ const GptSearchBar = () => {
 						placeholder={lang[langCode].placeholder}
 					/>
 					<button
-						className="col-span-3 rounded-r-full bg-red-700 hover:border-red-800 active:bg-red-900 outline-none"
+						className="col-span-3 rounded-r-full bg-blue-700 hover:border-blue-800 active:bg-blue-900 outline-none"
 						onClick={() => handleGptMoviesSearch()}
 					>
 						{lang[langCode].search}

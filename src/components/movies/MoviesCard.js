@@ -5,6 +5,15 @@ import { addMovieInfo } from "../../utils/slices/moviesSlice";
 
 const MoviesCard = ({ movies }) => {
 	const dispatch = useDispatch();
+	const handleMovieInfoPage = (movie) => {
+		dispatch(addMovieInfo(movie));
+		const scrollY =
+			document.documentElement.style.getPropertyValue("--scroll-y");
+		const body = document.body;
+		body.style.position = "fixed";
+		body.style.width = "100vw";
+		body.style.top = `-${scrollY}`;
+	};
 
 	return (
 		<div className="flex justify-start items-start gap-2 sm:gap-3 overflow-x-scroll w-full no-scrollbar-custom">
@@ -12,6 +21,7 @@ const MoviesCard = ({ movies }) => {
 				if (!movie.poster_path) return null;
 				return (
 					<div
+						onClick={() => handleMovieInfoPage(movie)}
 						key={movie.id}
 						className="h-72 sm:h-80 md:h-96 mt-2 hover:-translate-y-5 sm:hover:-translate-y-8 hover:scale-90 transition-all py-4"
 					>

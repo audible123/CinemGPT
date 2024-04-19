@@ -180,10 +180,10 @@ const Login = () => {
 							className="rounded-md w-full h-full p-4 font-semibold bg-black/50 border border-gray-200/50"
 						/>
 					</div>
-					{errorMsg && <p className="text-red-500">{errorMsg}</p>}
+					{errorMsg && <p className="text-blue-500">{errorMsg}</p>}
 					<button
 						type="submit"
-						className="rounded-sm w-full h-full p-2 my-1 bg-red-600 hover:bg-red-700 active:bg-red-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-800"
+						className="rounded-sm w-full h-full p-2 my-1 bg-blue-600 hover:bg-blue-700 active:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-800"
 						onClick={
 							isSignIn
 								? handleSignInFormValidation
