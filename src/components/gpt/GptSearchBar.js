@@ -1,17 +1,21 @@
 import React, { useRef } from "react";
 import lang from "../../utils/constants/langConstants";
 import { useDispatch, useSelector } from "react-redux";
-import openai from "../../utils/openai";
-import { MOVIES_OPTIONS } from "../../utils/constants/constants";
+// import openai from "../../utils/openai";
+import { GEMINI_KEY, MOVIES_OPTIONS } from "../../utils/constants/constants";
 import {
 	setGptMoviesSearch,
 	setGptSearchBtnClicked,
 } from "../../utils/slices/gptSlice";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 const GptSearchBar = () => {
 	const langCode = useSelector((store) => store.config.lang);
 	const searchText = useRef(null);
 	const dispatch = useDispatch();
+
+	const genAI = new GoogleGenerativeAI(GEMINI_KEY);
 
 	const handletmdbMoviesSearch = async (movie) => {
 		try {
@@ -35,22 +39,23 @@ const GptSearchBar = () => {
 					gptSearchMovies: null,
 				})
 			);
+
+			const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 			const query =
 				"Act as a Movie Recommendation system and suggest some movies for the query : " +
 				searchText.current.value +
 				". only give me names of 5 movies, comma seperated like the example result given ahead. Example is : Koi mil gya, Hera feri, Kabhi kushi kabhi gam, Dilwale, Dune";
-			const gptSearch = await openai.chat.completions.create({
-				messages: [{ role: "user", content: query }],
-				model: "gpt-3.5-turbo",
-			});
-			const getMovies = gptSearch.choices[0].message.content.split(",");
-			const promisesMovies = getMovies.map((movie) =>
+			
+			const result = await model.generateContent(query);
+			const gptResults = await result.response;
+			const gptMovies=gptResults.candidates?.[0]?.content?.parts?.[0]?.text.split(",");
+			const promisesMovies = gptMovies.map((movie) =>
 				handletmdbMoviesSearch(movie)
 			);
 			const tmdbMoviesSearch = await Promise.all(promisesMovies);
 			dispatch(
 				setGptMoviesSearch({
-					gptSearchNames: getMovies,
+					gptSearchNames: gptMovies,
 					gptSearchMovies: tmdbMoviesSearch,
 				})
 			);
