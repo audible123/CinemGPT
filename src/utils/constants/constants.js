@@ -17,7 +17,7 @@ export const CDN_IMG_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const OPAINAI_KEY = process.env.REACT_APP_OPAINAI_KEY;
 
-export const GEMINI_KEY = "AIzaSyDNRIcAYr7X41p7YktU_KucDeh9akrRtgc";
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
 
 export const LANGUAGE_CODE = [
 	{
