@@ -15,7 +15,8 @@ import { auth } from "../../utils/firebase.js";
 import { addUser } from "../../utils/slices/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer.js";
-import { APP_BG, AVATAR_LOGO } from "../../utils/constants/constants.js";
+import { AVATAR_LOGO } from "../../utils/constants/constants.js";
+import bgImage from "../../assets/bg.jpg";
 import lang from "../../utils/constants/langConstants.js";
 import { toast } from "react-toastify";
 import { setForgotPass } from "../../utils/slices/configSlice.js";
@@ -130,7 +131,7 @@ const Login = () => {
 			<div className="min-h-[160vh] w-full h-full">
 				<img
 					className="relative w-full min-h-[160vh] z-[-10] object-cover object-left-top"
-					src={APP_BG}
+					src={bgImage}
 					alt="bgImg"
 				/>
 			</div>
